@@ -1,0 +1,333 @@
+:root {
+    --dark-purple: oklch(0.1956 0.0689 299.07);
+    --russian-violet: oklch(0.2318 0.0922 309.27);
+    --terminal-blue: oklch(0.9145 0.0997 178.24);
+    --terminal-green: oklch(0.8664 0.294827 142.4953);
+    --caribbean-current: oklch(0.4543 0.072 210.79);
+    --rich-black: oklch(0.0864 0.0599 264.05);
+}
+
+html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 30%, var(--dark-purple), transparent 40%),
+        radial-gradient(circle at 80% 70%, var(--russian-violet), transparent 50%),
+        linear-gradient(135deg, #0d001f, #150031);
+    filter: blur(80px);
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-top: 1rem;
+}    
+
+h1 {
+    font-size: 45px;
+    margin-top: 0.25em;
+}
+
+h2 {
+    margin: 0 0 1rem;
+    font-weight: normal;
+    color: inherit;
+    font-size: 20px;
+}
+
+pre {
+    font-weight: normal;
+    /* background: linear-gradient(14deg, #d83333 0%, #f041ff 100%); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    /* background-clip: text; */
+    color: inherit;
+    margin: 0;
+}    
+
+p {
+    color: var(--terminal-blue);
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.006em;
+    margin: 0;
+}
+
+code {
+    display: inline-block;
+    background:
+        linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
+        linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 6px 8px;
+}
+
+#container {
+    /* font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif; */
+    height: 100%;
+}
+
+#heading {
+    width: 100%;
+    margin-bottom: 0.5em;
+    border-radius: 22px 22px 0 0;
+    color: var(--terminal-green);
+    background-color: var(--rich-black);
+    h2 {
+        margin: 0.5em 0 0.5em 0.2em;
+    }
+}
+
+#welcome {
+    color: var(--terminal-green);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}    
+#readme {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: center;
+    width: 90%;
+    border: solid 2px var(--rich-black);
+    border-radius: 25px;
+    color: var(--terminal-blue);
+    font-size: large;
+
+    pre {
+        margin-left: 1em;
+    }    
+}
+
+#projects {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: center;
+    margin-top: 1em;
+    width: 90%;
+    border: solid 2px var(--rich-black);
+    border-radius: 25px;
+    color: var(--terminal-blue);
+    font-size: large;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        border-radius: 25px;
+        margin: 3px;
+        background-color: inherit;
+        transition: background-color 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
+    }
+
+    .card:hover {
+        background-color: var(--russian-violet);
+        box-shadow: 0 0 25px #f041ff;
+    }
+}
+
+#milestones {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: center;
+    margin-top: 1em;
+    width: 90%;
+    border: solid 2px var(--rich-black);
+    border-radius: 25px;
+    color: var(--terminal-blue);
+    font-size: large;
+
+    .timeline {
+        position: relative;
+        margin: 2rem 0;
+        padding-left: 3rem;
+    }
+    
+    .milestone {
+        position: relative;
+        margin-bottom: 3rem;
+        padding-left: 2rem;
+    }
+    
+    .milestone .dot {
+        position: absolute;
+        left: 0;
+        top: 0.4rem;
+        width: 14px;
+        height: 14px;
+        background-color: #00ff00;
+        border-radius: 50%;
+        z-index: 2;
+    }
+    
+    .milestone.latest .dot {
+        width: 20px;
+        height: 20px;
+        transform: translateX(-13%);
+    }
+    
+    .milestone::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 1.2rem;
+        width: 2px;
+        height: calc(100% + 2rem);
+        background-color: #00ff00;
+        z-index: 1;
+    }
+    
+    .milestone:last-child::before {
+        display: none;
+        /* no line after last dot */
+    }
+    
+    .milestone .content {
+        margin-left: 3rem;
+        color: #00ff00;
+        font-family: 'JetBrains Mono', monospace;
+    }
+}
+
+#links {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: center;
+    margin: 1em 0 1em 0;
+    padding-bottom: 5vh;
+    width: 90%;
+    border: solid 2px var(--rich-black);
+    border-radius: 25px;
+    color: var(--terminal-blue);
+    font-size: large;
+
+    .links {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+}    
+
+#links a {
+    display: flex;
+    align-items: center;
+    padding: 12px 12px 12px 6px;
+    color: #111827;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#links a:hover {
+    color: rgb(78, 80, 86);
+}    
+
+#links a svg {
+    height: 1em;
+    margin-left: 8px;
+}    
+
+#links a.button {
+    color: white;
+    background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;    
+}    
+
+#links a.button:hover {
+    color: rgb(230, 230, 230);
+    box-shadow: none;
+}    
+
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid var(--terminal-green);
+    white-space: nowrap;
+    width: 0;
+    animation:
+        typing 3s steps(32, end) forwards,
+        blink .9s infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink {
+    from { border-color: transparent }
+    to { border-color: var(--terminal-green) }
+}
+
+@media screen and (max-height: 368px) {}
+
+@media screen and (max-width: 768px) {
+    #container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #hero {
+        display: block;
+        padding-top: 10%;
+    }
+
+    #links {
+        flex-wrap: wrap;
+    }
+
+    #links a.button {
+        padding: 14px 18px;
+    }
+
+    h1 {
+        line-height: 1.5;
+    }
+}

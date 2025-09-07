@@ -7,10 +7,15 @@
     --rich-black: oklch(0.0864 0.0599 264.05);
 }
 
+html, body, main, #container {
+    min-width: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden;
+}
+
 html {
     margin: 0;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
     background-color: #000;
 }
 
@@ -307,27 +312,70 @@ code {
 }
 
 @media screen and (max-height: 368px) {}
+@media screen and (max-width: 560px) {
+    .typewriter {
+        max-width: 100vw;
+        white-space: wrap;
+
+        h1 {
+            line-break: strict;
+        }
+    }
+}
 
 @media screen and (max-width: 768px) {
     #container {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
     }
 
-    #hero {
-        display: block;
-        padding-top: 10%;
+    .cards {
+        flex-direction: column;
+        align-items: stretch;
+
+        .card {
+            width: 100%;
+        }
     }
+
+    #container,
+    #readme,
+    #projects,
+    #milestones,
+    #links {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #milestones .timeline {
+        padding-left: 2rem;
+    }
+
+    #milestones .milestone .content {
+        margin-left: 2rem;
+        font-size: 14px;
+    }
+
 
     #links {
         flex-wrap: wrap;
+        justify-content: center;
     }
 
-    #links a.button {
-        padding: 14px 18px;
+    #links a { 
+        flex: 1 1 auto;
+        justify-content: center;
     }
 
     h1 {
-        line-height: 1.5;
+        font-size: 28px;
+    }
+
+    h2 {
+        font: 18px;
     }
 }

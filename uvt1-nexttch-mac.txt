@@ -1,4 +1,0 @@
-Physical Address    Transport Name
-=================== ==========================================================
-C8-FF-28-6F-2B-BD   Media disconnected
-1C-39-47-C8-D1-E6   \Device\Tcpip_{1ADD9A15-9E60-4057-BF3C-5CB663689AB1}

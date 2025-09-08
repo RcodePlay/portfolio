@@ -403,6 +403,10 @@ a {
         box-sizing: border-box;
     }
 
+    .popup {
+        min-width: 90%;
+    }
+
     #milestones .timeline {
         padding-left: 2rem;
     }

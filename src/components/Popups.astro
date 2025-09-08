@@ -1,0 +1,77 @@
+<script>
+  // Extend the Window interface to include show, hide, and hideAll
+  declare global {
+    interface Window {
+      show: (id: string) => void;
+      hide: (id: string) => void;
+      hideAll: () => void;
+    }
+  }
+
+  function show(id: string) {
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById(id);
+    if (overlay) overlay.classList.add("active");
+    if (popup) popup.classList.add("active");
+  }
+
+  function hide(id: string) {
+    const popup = document.getElementById(id);
+    const overlay = document.getElementById("overlay");
+    if (popup) popup.classList.remove("active");
+    if (overlay) overlay.classList.remove("active");
+  }
+
+  function hideAll() {
+    document
+      .querySelectorAll(".popup")
+      .forEach((p) => p.classList.remove("active"));
+    const overlay = document.getElementById("overlay");
+    if (overlay) overlay.classList.remove("active");
+  }
+
+  // Expose functions globally for inline event handlers
+  window.show = show;
+  window.hide = hide;
+  window.hideAll = hideAll;
+</script>
+
+<div class="popup" id="popup1">
+  <section id="heading">
+    <h2>Slovakian Skywalker.md</h2>
+    <a href="#" onclick="hide('popup1')">&#10006</a>
+  </section>
+  <section id="popup-text">
+    <p>A personal CubeSat project, more info in the GitHub repo (it's private for now, though).</p>
+  </section>
+</div>
+
+<div class="popup" id="popup2">
+  <section id="heading">
+    <h2>OpenBoot.md</h2>
+    <a href="#" onclick="hide('popup2')">&#10006</a>
+  </section>
+  <section id="popup-text">
+    <p>A project dedicated to dualbooting two different ROMs from A/B slots on Android. It's still under development and not available to the public, but it is going to be an open-source project. In theory, you should be able to use two different ROMs on devices that have A/B boot partitions, but practically, OEMs don't bother since it is too complex to maintain all the possible ROMs combinations and their differences, /data partition encryption mismatch, device drivers, etc.</p>
+  </section>
+</div>
+
+<div class="popup" id="popup3">
+  <section id="heading">
+    <h2>EchoMesh.md</h2>
+    <a href="#" onclick="hide('popup3')">&#10006</a>
+  </section>
+  <section id="popup-text">
+    <p>This project is dedicated to helping you build your own true private communication system. It creates a LoRa mesh node system that relays messages privately and securely accross the whole network. It is limited to local communication only, since the LoRa transceivers are of limited range. It utilizes a secure element chip (the ATECC608A) on the user end devices for encryption/decryption and key storage. The nodes in the mesh networks (acting as message relays) do not decrypt or read the messages sent through them, since they don't have a secure element onboard and are specifically designed for only relaying messages.</p>
+  </section>
+</div>
+
+<div class="popup" id="popup4">
+  <section id="heading">
+    <h2>Cipherlink.md</h2>
+    <a href="#" onclick="hide('popup4')">&#10006</a>
+  </section>
+  <section id="popup-text">
+    <p>Yet another private communication project by me. This one utilizes the existing infrastructure of internet and cell towers, limiting range to cell tower coverage. How this worsk: you take a Cipherlink module that uses NFC and USB for communication with your phone or computer, it also has a secure element onboard (the ATECC608A) used for encryption/decryption & key storage. When you write a message, you tap your module to your phone to encrypt the message, which is then sent to an API server that holds the encrypted messages along with recepient userIDs. The next time the recepient opens the Cipherlink app on their phone, it will fetch the incoming messages from the API server, prompting the user to tap their module to decrypt. Once read, the message gets destroyed and removed from the API server's database. The point is, the decrypted message never touches the internet. It only stays on your device as long as you want it to.</p>
+  </section>
+</div>

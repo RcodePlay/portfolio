@@ -5,16 +5,18 @@ import Readme from "./Readme.astro";
 import Projects from "./Projects.astro";
 import Milestones from "./Milestones.astro";
 import Links from "./Links.astro";
+import Popups from "./Popups.astro";
 ---
-
+<Popups></Popups>
+<div id="overlay" onclick="hideAll()"></div>
 <div id="container">
   <main>
     <section id="welcome">
       <h1 class="typewriter">> Welcome to Radoslav's Portfolio</h1>
     </section>
-	<Readme></Readme>
-	<Projects></Projects>
-	<Milestones></Milestones>
-    <Links></Links>
+    <Readme />
+    <Projects />
+    <Milestones />
+    <Links />
   </main>
 </div>

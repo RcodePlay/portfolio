@@ -96,13 +96,17 @@ code {
 }
 
 #heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     margin-bottom: 0.5em;
     border-radius: 22px 22px 0 0;
     color: var(--terminal-green);
     background-color: var(--rich-black);
-    h2 {
-        margin: 0.5em 0 0.5em 0.2em;
+    h2, a {
+        margin: 1vw;
     }
 }
 
@@ -145,7 +149,7 @@ code {
 .cards {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-around;
     width: 100%;
 
@@ -165,6 +169,49 @@ code {
         background-color: var(--russian-violet);
         box-shadow: 0 0 25px #f041ff;
     }
+}
+
+.popup {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: fit-content;
+    min-width: 30%;
+    height: fit-content;
+    min-height: 25%;
+    transform: translate(-50%, -50%);
+    background: var(--russian-violet);
+    border-radius: 23px;
+    z-index: 1000;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.popup.active {
+    display: flex;
+    /* toggled on */
+}
+
+#popup-text {
+    text-align: center;
+    margin: 0.5vh 1.5vw 1.5vh 1.5vw;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+#overlay.active {
+    display: block;
 }
 
 #milestones {
@@ -229,6 +276,13 @@ code {
         color: #00ff00;
         font-family: 'JetBrains Mono', monospace;
     }
+}
+
+a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #links {
@@ -314,12 +368,10 @@ code {
 @media screen and (max-height: 368px) {}
 @media screen and (max-width: 560px) {
     .typewriter {
-        max-width: 100vw;
+        border: none;
+        width: 100%;
+        animation: none;
         white-space: wrap;
-
-        h1 {
-            line-break: strict;
-        }
     }
 }
 
